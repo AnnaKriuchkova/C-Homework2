@@ -43,18 +43,41 @@ int [,] PrintArray(int[,]array)
     return array;
 }
 
-int [,] Multiplication(int[,]m1, int[,]m2, int[,]m3)
-{
-     for (int i = 0; i < m3.GetLength(0); i++)
-    {
-        for (int j = 0; j < m3.GetLength(1); j++)
-        {
-            m3[i,j] = m1[i,j]*m2[i,j];
-        }
-    }
-    return m3;
-}
 
+// int [,] Multiplication(int[,]m1, int[,]m2, int[,]m3)
+// {
+//  for (int i = 0; i < m1.GetLength(0); i++)
+// {
+//     for (int j = 0; j < m2.GetLength(1); j++)
+//     {
+//         for (int k = 0; k < m2.GetLength(0); k++)
+//         {
+//             m3[i,j] += m1[i,k] * m2[k,j];
+//         }
+//     }
+//     return m3;
+// }
+// }
+
+static int[,] Multiplication(int[,] m1, int[,] m2)
+    {       
+        var m3 = new int[m1.GetLength(0), m2.GetLength(1)];
+
+        for (var i = 0; i < m1.GetLength(0); i++)
+        {
+            for (var j = 0; j < m2.GetLength(1); j++)
+            {
+                m3[i, j] = 0;
+
+                for (var k = 0; k < m1.GetLength(0); k++)
+                {
+                    m3[i, j] += m1[i, k] * m2[k, j];
+                }
+            }
+        }
+
+        return m3;
+    }
 
 Console.WriteLine("Матрица 1");
 GetArray(matrix1);
@@ -65,5 +88,5 @@ GetArray(matrix2);
 PrintArray(matrix2);
 Console.WriteLine("____________");
 Console.WriteLine("Матрица 3");
-Multiplication(matrix1, matrix2, matrix3);
+Multiplication(matrix1, matrix2);
 PrintArray(matrix3);
