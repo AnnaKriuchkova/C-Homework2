@@ -27,6 +27,4 @@ int recursion(int m, int n)
         return recursion(m - 1, recursion(m, n - 1));
     }
 }
-    
-
-Console.Write($"Функция Аккермана по ({m},{n}) равна {recursion(m, n)}");
+Console.WriteLine($"Функция Аккермана по ({m},{n}) равна {recursion(m, n)}");

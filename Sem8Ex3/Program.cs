@@ -13,7 +13,7 @@ int rows = Convert.ToInt32(Console.ReadLine());
 
 int [,] matrix1 = new int [rows,rows];
 int [,] matrix2 = new int [rows,rows];
-int [,] matrix3 = new int [rows,rows];
+
 
 int [,] GetArray(int[,] matrix)
 {
@@ -44,32 +44,17 @@ int [,] PrintArray(int[,]array)
 }
 
 
-// int [,] Multiplication(int[,]m1, int[,]m2, int[,]m3)
-// {
-//  for (int i = 0; i < m1.GetLength(0); i++)
-// {
-//     for (int j = 0; j < m2.GetLength(1); j++)
-//     {
-//         for (int k = 0; k < m2.GetLength(0); k++)
-//         {
-//             m3[i,j] += m1[i,k] * m2[k,j];
-//         }
-//     }
-//     return m3;
-// }
-// }
-
-static int[,] Multiplication(int[,] m1, int[,] m2)
+int[,] Multiplication(int[,] m1, int[,] m2)
     {       
-        var m3 = new int[m1.GetLength(0), m2.GetLength(1)];
+        int[,] m3 = new int[m1.GetLength(0), m2.GetLength(1)];
 
-        for (var i = 0; i < m1.GetLength(0); i++)
+        for (int i = 0; i < m1.GetLength(0); i++)
         {
-            for (var j = 0; j < m2.GetLength(1); j++)
+            for (int j = 0; j < m2.GetLength(1); j++)
             {
                 m3[i, j] = 0;
 
-                for (var k = 0; k < m1.GetLength(0); k++)
+                for (int k = 0; k < m1.GetLength(0); k++)
                 {
                     m3[i, j] += m1[i, k] * m2[k, j];
                 }
@@ -88,5 +73,4 @@ GetArray(matrix2);
 PrintArray(matrix2);
 Console.WriteLine("____________");
 Console.WriteLine("Матрица 3");
-Multiplication(matrix1, matrix2);
-PrintArray(matrix3);
+PrintArray(Multiplication(matrix1, matrix2));
